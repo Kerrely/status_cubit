@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:status_cubit/src/cubit/status_cubit.dart';
+import 'package:status_cubit/src/bloc/status_cubit/status_cubit.dart';
 
-typedef StatusSuccessBuilder<T> = Widget Function(BuildContext context, StatusSuccessState<T> state);
-typedef StatusErrorBuilder<T> = Widget Function(BuildContext context, StatusErrorState<T> state);
-typedef StatusLoadingBuilder<T> = Widget Function(BuildContext context, StatusLoadingState<T> state);
+typedef StatusSuccessBuilder<V> = Widget Function(BuildContext context, StatusSuccessState<V> state);
+typedef StatusErrorBuilder<V> = Widget Function(BuildContext context, StatusErrorState<V> state);
+typedef StatusLoadingBuilder<V> = Widget Function(BuildContext context, StatusLoadingState<V> state);
 
-class StatusBlocBuilder<T> extends BlocBuilder<StatusCubit<T>, StatusState<T>> {
+class StatusBlocBuilder<V, T extends StatusCubit<V>> extends BlocBuilder<T, StatusState<V>> {
   final StatusSuccessBuilder? onSuccess;
   final StatusErrorBuilder? onError;
   final StatusLoadingBuilder? onLoading;
@@ -21,12 +21,12 @@ class StatusBlocBuilder<T> extends BlocBuilder<StatusCubit<T>, StatusState<T>> {
     super.bloc,
     super.buildWhen,
   }) : super(
-          builder: (BuildContext context, StatusState<T> state) {
+          builder: (BuildContext context, StatusState<V> state) {
             final defaultContent = onDefault?.call(context) ?? SizedBox.shrink();
             return switch (state) {
-              StatusSuccessState<T>() => onSuccess?.call(context, state) ?? defaultContent,
-              StatusErrorState<T>() => onError?.call(context, state) ?? defaultContent,
-              StatusLoadingState<T>() => onLoading?.call(context, state) ?? defaultContent,
+              StatusSuccessState<V>() => onSuccess?.call(context, state) ?? defaultContent,
+              StatusErrorState<V>() => onError?.call(context, state) ?? defaultContent,
+              StatusLoadingState<V>() => onLoading?.call(context, state) ?? defaultContent,
               _ => defaultContent,
             };
           },
