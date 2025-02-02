@@ -45,6 +45,7 @@ set the status in the state like with Enum or whole Class and then explicitly ch
 Widget build(BuildContext context) {
   return Scaffold(
     body: BlocProvider<MyCubit>(
+      create: (context) => MyCubit(),
       child: StatusBlocListener<MyCubit, SomeDataIFetch>(
         onLoading: (context) => showLoadingDialog(context),
         onError: (context, error) => showErrorMessage(context, error),
@@ -74,6 +75,7 @@ widget and provide it with parameters that this bloc builder will provide in var
 Widget build(BuildContext context) {
   return Scaffold(
     body: BlocProvider<MyCubit>(
+      create: (context) => MyCubit(),
       child: StatusBlocBuilder<MyCubit, SomeDataIFetch>(
         onLoading: (context) => CircularProgressIndicator(),
         onError: (context, error) => Text(error),
