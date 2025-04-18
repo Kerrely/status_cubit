@@ -13,7 +13,7 @@ import 'package:status_cubit/src/bloc/status_cubit/status_cubit.dart';
 /// `onSuccess` will be called when the state is [StatusSuccessState]. **`onFinished` will be called before this.**
 ///
 /// `onError` will be called when the state is [StatusErrorState]. **`onFinished` will be called before this.**
-class StatusBlocListener<V, T extends StatusCubit<V>> extends BlocListener<T, StatusState<V>> {
+class StatusBlocListener<T extends StatusCubit<V>, V> extends BlocListener<T, StatusState<V>> {
   final void Function(BuildContext context, StatusSuccessState<V> state)? onSuccess;
   final void Function(BuildContext context, StatusErrorState<V> state)? onError;
   final void Function(BuildContext context, StatusLoadingState<V> state)? onLoading;
