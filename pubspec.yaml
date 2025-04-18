@@ -1,6 +1,6 @@
 name: status_cubit
 description: Extension package providing further options above the popular Cubit class from well known BLoC package fluter_bloc
-version: 1.0.1
+version: 1.1.0
 repository: https://github.com/Kerrely/status_cubit
 homepage: https://github.com/Kerrely/status_cubit
 
