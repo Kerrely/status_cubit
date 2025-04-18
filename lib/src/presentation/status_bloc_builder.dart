@@ -6,10 +6,10 @@ typedef StatusSuccessBuilder<V> = Widget Function(BuildContext context, StatusSu
 typedef StatusErrorBuilder<V> = Widget Function(BuildContext context, StatusErrorState<V> state);
 typedef StatusLoadingBuilder<V> = Widget Function(BuildContext context, StatusLoadingState<V> state);
 
-class StatusBlocBuilder<V, T extends StatusCubit<V>> extends BlocBuilder<T, StatusState<V>> {
-  final StatusSuccessBuilder? onSuccess;
-  final StatusErrorBuilder? onError;
-  final StatusLoadingBuilder? onLoading;
+class StatusBlocBuilder<T extends StatusCubit<V>, V> extends BlocBuilder<T, StatusState<V>> {
+  final StatusSuccessBuilder<V>? onSuccess;
+  final StatusErrorBuilder<V>? onError;
+  final StatusLoadingBuilder<V>? onLoading;
   final WidgetBuilder? onDefault;
 
   StatusBlocBuilder({

@@ -38,7 +38,7 @@ void main() {
       await tester.pumpWidget(
         TestWidget(
           statusCubit: statusCubit,
-          child: StatusBlocBuilder<int, TestStatusCubit>(
+          child: StatusBlocBuilder<TestStatusCubit, int>(
             onSuccess: (context, state) => const Text('Success!'),
           ),
         ),
@@ -54,7 +54,7 @@ void main() {
       await tester.pumpWidget(
         TestWidget(
           statusCubit: statusCubit,
-          child: StatusBlocBuilder<int, TestStatusCubit>(
+          child: StatusBlocBuilder<TestStatusCubit, int>(
             onError: (context, state) => const Text('Error!'),
           ),
         ),
@@ -70,7 +70,7 @@ void main() {
       await tester.pumpWidget(
         TestWidget(
           statusCubit: statusCubit,
-          child: StatusBlocBuilder<int, TestStatusCubit>(
+          child: StatusBlocBuilder<TestStatusCubit, int>(
             onLoading: (context, state) => const CircularProgressIndicator(),
           ),
         ),
@@ -86,7 +86,7 @@ void main() {
       await tester.pumpWidget(
         TestWidget(
           statusCubit: statusCubit,
-          child: StatusBlocBuilder<int, TestStatusCubit>(
+          child: StatusBlocBuilder<TestStatusCubit, int>(
             onDefault: (context) => const Text('Default'),
           ),
         ),
